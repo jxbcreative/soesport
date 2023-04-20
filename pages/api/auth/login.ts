@@ -1,7 +1,6 @@
 import * as bcrypt from "bcrypt";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Login } from "../../../utils/authtype";
-// import { serialize } from "cookie";
 import * as jwt from 'jsonwebtoken';
 import { users } from "./register";
 
@@ -9,6 +8,7 @@ import { users } from "./register";
 
 const secret = "secret";
 const expirationTime = '1h';
+
 
 export default async function handler(
   req: NextApiRequest,
@@ -40,5 +40,5 @@ export default async function handler(
   res.setHeader('Set-Cookie', `token=${token}; HttpOnly`);
     
 
-  res.status(200).json({ message: "Authentication successful" });
+  res.status(200).json({ message: "Authentication successful", token });
 }
