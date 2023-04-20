@@ -1,0 +1,5 @@
+.bgHero{
+    background: url('../public/assets/bg-hero.webp');
+    background-position: center;
+    background-size: cover;
+}
