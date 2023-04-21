@@ -6,8 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "../../styles/Home.module.css";
 import { getProduct } from "../../utils/redux/slice/ProductSlice";
 import { AppDispatch, RootState } from "../../utils/redux/store";
+import React from 'react';
 
-const Products = () => {
+interface PropProduct{
+  openFilter: boolean;
+}
+
+const Products:React.FC<PropProduct> = ({openFilter}) => {
   const dispatch = useDispatch<AppDispatch>();
   const product = useSelector((state: RootState) => state.product.products);
 
@@ -17,7 +22,7 @@ const Products = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-4 gap-10">
+      <div className={`${openFilter? "grid-cols-3" : "grid-cols-4"} grid gap-10`}>
         {product?.map((items: any) => (
           <div key={items.id}>
             <div className={`${styles.product} w-72 rounded-xl`}>
@@ -34,7 +39,7 @@ const Products = () => {
               <p className="text-[13px] text-gray-400">{items.merek}</p>
               <div className="flex items-center justify-between">
                 <p className="text-[15px] ">$ {items.price}</p>
-                <div className="bg-blue-400 p-2 rounded-md">
+                <div className="bg-black p-2 rounded-md">
                   <Link href={"/cart"}>
                     <BsCart2 className="text-md text-white" />
                   </Link>
