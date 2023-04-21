@@ -1,5 +1,6 @@
-.bgHero{
-    background: url('../public/assets/bg-hero.webp');
-    background-position: center;
+.BgHeroMobile{
+    background: url('../public/assets/bg-hero-mobile.webp');
     background-size: cover;
+    background-position: center;
+    @apply w-screen h-[60vh]
 }

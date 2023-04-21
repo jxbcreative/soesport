@@ -14,5 +14,7 @@ module.exports = {
       'inter' : ['Inter']
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }
