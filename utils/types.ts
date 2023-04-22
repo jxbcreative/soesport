@@ -9,10 +9,16 @@ export type Product = {
   id: number;
   name_product: string;
   merek: string;
-  price: number;
+  price: string;
   desc_product: string;
   rating: string;
   size: Array<string>;
   thumbnail: string;
   images: Array<string>;
 };
+
+export type Service = {
+  title : string;
+  content: string;
+  icon: string;
+}

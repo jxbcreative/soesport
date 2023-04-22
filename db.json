@@ -3,7 +3,7 @@
     {
       "name_product": "Nike Dunk High Retro",
       "merek": "Nike",
-      "price": 110,
+      "price": "100",
       "desc_product": "good quality",
       "rating": 4.25,
       "size": [
@@ -29,7 +29,7 @@
     {
       "name_product": "Nike Air Force 1 '07 LX",
       "merek": "Nike",
-      "price": 140,
+      "price": "140",
       "desc_product": "good quality",
       "rating": 4.52,
       "size": [
@@ -55,7 +55,7 @@
     {
       "name_product": "Nike Pegasus 40 Premium",
       "merek": "Nike",
-      "price": 160,
+      "price": "160",
       "desc_product": "good quality",
       "rating": 4.53,
       "size": [
@@ -81,7 +81,7 @@
     {
       "name_product": "Nike Air Max Plus Mercurial 25",
       "merek": "Nike",
-      "price": 180,
+      "price": "180",
       "desc_product": "good quality",
       "rating": 4.56,
       "size": [
@@ -107,7 +107,7 @@
     {
       "name_product": "Nike Air Max Bliss LX",
       "merek": "Nike",
-      "price": 156,
+      "price": "156",
       "desc_product": "good quality",
       "rating": 4.55,
       "size": [
@@ -133,7 +133,7 @@
     {
       "name_product": "Air Jordan XXXVII Low",
       "merek": "Nike",
-      "price": 206,
+      "price": "206",
       "desc_product": "good quality",
       "rating": 4.55,
       "size": [
@@ -159,7 +159,7 @@
     {
       "name_product": "Jordan Series Mid",
       "merek": "Nike",
-      "price": 105,
+      "price": "105",
       "desc_product": "good quality",
       "rating": 4.56,
       "size": [
@@ -185,7 +185,7 @@
     {
       "name_product": "Air Jordan 1 Zoom CMFT 2",
       "merek": "Nike",
-      "price": 158,
+      "price": "158",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -211,7 +211,7 @@
     {
       "name_product": "Superstar Ayoon Shoes",
       "merek": "Adidas",
-      "price": 155,
+      "price": "155",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -237,7 +237,7 @@
     {
       "name_product": "Superstar Bonega Shoes",
       "merek": "Adidas",
-      "price": 159,
+      "price": "159",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -263,7 +263,7 @@
     {
       "name_product": "Superstar Cozy Shoes",
       "merek": "Adidas",
-      "price": 180,
+      "price": "180",
       "desc_product": "good quality",
       "rating": 4.59,
       "size": [
@@ -289,7 +289,7 @@
     {
       "name_product": "Superstar Bonega 2B Shoes",
       "merek": "Adidas",
-      "price": 157,
+      "price": "157",
       "desc_product": "good quality",
       "rating": 4.54,
       "size": [
@@ -315,7 +315,7 @@
     {
       "name_product": "Stan Smith Vegan Shoes",
       "merek": "Adidas",
-      "price": 157,
+      "price": "157",
       "desc_product": "good quality",
       "rating": 4.53,
       "size": [
@@ -341,7 +341,7 @@
     {
       "name_product": "Stan Smith Lux Shoes",
       "merek": "Adidas",
-      "price": 186,
+      "price": "186",
       "desc_product": "good quality",
       "rating": 4.54,
       "size": [
@@ -367,7 +367,7 @@
     {
       "name_product": "Stan Smith Recon Shoes",
       "merek": "Adidas",
-      "price": 195,
+      "price": "195",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -393,7 +393,7 @@
     {
       "name_product": "Ultraboost Light Shoes",
       "merek": "Adidas",
-      "price": 210,
+      "price": "210",
       "desc_product": "good quality",
       "rating": 4.58,
       "size": [
@@ -419,7 +419,7 @@
     {
       "name_product": "Ultraboost 1.0 Shoes",
       "merek": "Adidas",
-      "price": 215,
+      "price": "215",
       "desc_product": "good quality",
       "rating": 4.55,
       "size": [
@@ -445,7 +445,7 @@
     {
       "name_product": "ADIDAS By Stella Mccartney Ultraboost 23 Shoes",
       "merek": "Adidas",
-      "price": 218,
+      "price": "218",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -471,7 +471,7 @@
     {
       "name_product": "ADIDAS NMD R1 Shoes",
       "merek": "Adidas",
-      "price": 187,
+      "price": "187",
       "desc_product": "good quality",
       "rating": 4.46,
       "size": [
@@ -497,7 +497,7 @@
     {
       "name_product": "ADIDAS NMD V3 Shoes",
       "merek": "Adidas",
-      "price": 198,
+      "price": "198",
       "desc_product": "good quality",
       "rating": 4.47,
       "size": [
@@ -523,7 +523,7 @@
     {
       "name_product": "Converse Chuck 70 Hi Unisex Sneakers Shoes - Black",
       "merek": "Converse",
-      "price": 89,
+      "price": "89",
       "desc_product": "good quality",
       "rating": 4.5,
       "size": [
@@ -549,7 +549,7 @@
     {
       "name_product": "Converse Chuck 70 Workwear Men's Sneakers - Black",
       "merek": "Converse",
-      "price": 91,
+      "price": "91",
       "desc_product": "good quality",
       "rating": 4.55,
       "size": [
@@ -575,7 +575,7 @@
     {
       "name_product": "Converse Chuck 70 Floral Women's Sneakers - Grey",
       "merek": "Converse",
-      "price": 92,
+      "price": "92",
       "desc_product": "good quality",
       "rating": 4.54,
       "size": [
@@ -601,7 +601,7 @@
     {
       "name_product": "Converse Chuck 70 At-Cx Platform Men's Sneakers - Black/Egret/Black",
       "merek": "Converse",
-      "price": 104,
+      "price": "104",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -627,7 +627,7 @@
     {
       "name_product": "Converse Men's Chuck 70 Sneakers - Engine Smoke/Nightfall Grey",
       "merek": "Converse",
-      "price": 89,
+      "price": "89",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -653,7 +653,7 @@
     {
       "name_product": "Converse Unisex Chuck 70 Plus Material Mashup Sneakers",
       "merek": "Converse",
-      "price": 93,
+      "price": "93",
       "desc_product": "good quality",
       "rating": 4.55,
       "size": [
@@ -679,7 +679,7 @@
     {
       "name_product": "Converse Acw Chuck 70 Women's Sneakers - Volt/Black Beauty/Lily White",
       "merek": "Converse",
-      "price": 200,
+      "price": "200",
       "desc_product": "good quality",
       "rating": 4.43,
       "size": [
@@ -705,7 +705,7 @@
     {
       "name_product": "Converse Chuck 70 Vintage Canvas Unisex Sneakers - Ghosted/Egret/Black",
       "merek": "Converse",
-      "price": 94,
+      "price": "94",
       "desc_product": "good quality",
       "rating": 4.53,
       "size": [
@@ -731,7 +731,7 @@
     {
       "name_product": "Leather Lowland CC Shoe",
       "merek": "Vans",
-      "price": 86,
+      "price": "86",
       "desc_product": "good quality",
       "rating": 4.56,
       "size": [
@@ -757,7 +757,7 @@
     {
       "name_product": "Court Lowland Cc Jmp R Shoe",
       "merek": "Vans",
-      "price": 96,
+      "price": "96",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -783,7 +783,7 @@
     {
       "name_product": "Sport Lowland Cc Shoe",
       "merek": "Vans",
-      "price": 86,
+      "price": "86",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -809,7 +809,7 @@
     {
       "name_product": "Checkerboard Slip-On Shoe",
       "merek": "Vans",
-      "price": 66,
+      "price": "66",
       "desc_product": "good quality",
       "rating": 4.58,
       "size": [
@@ -835,7 +835,7 @@
     {
       "name_product": "Old Skool Shoe",
       "merek": "Vans",
-      "price": 71,
+      "price": "71",
       "desc_product": "good quality",
       "rating": 4.57,
       "size": [
@@ -861,7 +861,7 @@
     {
       "name_product": "Sk8-Hi Shoe",
       "merek": "Vans",
-      "price": 81,
+      "price": "81",
       "desc_product": "good quality",
       "rating": 4.58,
       "size": [
@@ -887,7 +887,7 @@
     {
       "name_product": "Suede Canvas Old Skool V Shoe",
       "merek": "Vans",
-      "price": 76,
+      "price": "76",
       "desc_product": "good quality",
       "rating": 4.62,
       "size": [
@@ -913,7 +913,7 @@
     {
       "name_product": "UltraRange EXO Shoe",
       "merek": "Vans",
-      "price": 101,
+      "price": "101",
       "desc_product": "good quality",
       "rating": 4.59,
       "size": [

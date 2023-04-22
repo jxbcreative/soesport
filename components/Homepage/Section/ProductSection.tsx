@@ -1,17 +1,43 @@
-import React, { useState } from "react";
-import { BiChevronDown, BiSearch } from "react-icons/bi";
+import React, { useEffect, useState } from "react";
+import { BiChevronDown, BiSearch, BiCheck } from "react-icons/bi";
 import { GoSettings } from "react-icons/go";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../utils/redux/store";
 import Products from "../../Product";
+import { searchProduct } from "../../../utils/redux/slice/ProductSlice";
 
 interface PropProduct {
   isMobile?: boolean;
 }
 
-const sorting = ["High to Low", "Low to High"];
+const sorting = ["High to Low", "Low to High", "Popular"];
 
 const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
   const [openFilter, setOpenFIlter] = useState<boolean>(false);
   const [openSorting, setOpenSorting] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const products = useSelector((state: RootState) => state.product.products);
+  const [isSticky, setIsSticky] = useState<boolean>(false);
+  const [selectSorting, setSelectSorting] = useState<string>("");
+  const [selectMerek, setSelectMerek] = useState<string[]>([])
+  // const [searchType, setSearchType] = useState<string>('')
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
+  // const handlerSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchType(e.target.value)
+  //   dispatch(searchProduct(e.target.value))
+  // }
 
   const handlerOpenFilter = () => {
     setOpenFIlter(!openFilter);
@@ -20,6 +46,25 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
   const handlerOpenSorting = () => {
     setOpenSorting(!openSorting);
   };
+
+  const mereks = Array.from(new Set(products.map((product: any) => product.merek)));
+
+  const handlerCheckFilter = (merek: any) => {
+    if (selectMerek.includes(merek)) {
+      setSelectMerek((prevSelected) =>
+        prevSelected.filter((prevMerek) => prevMerek !== merek)
+      );
+    } else {
+      setSelectMerek((prevSelected) => [...prevSelected, merek]);
+    }
+  };
+  
+  // multiple select merek
+  const handlerSelectShorting = (val:any) => {
+    setSelectSorting(val)
+    setOpenSorting(false)
+  }
+
   return (
     <div>
       {isMobile ? (
@@ -32,8 +77,11 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
             <h2 className="font-semibold text-[32px]">New Arrival</h2>
             {/* Sorting and filtering */}
             <div className="flex space-x-3">
-                {/* Filter Category */}
-              <div onClick={handlerOpenFilter} className="bg-gray-100 rounded-md p-2.5">
+              {/* Filter Category */}
+              <div
+                onClick={handlerOpenFilter}
+                className="bg-gray-100 rounded-md p-2.5"
+              >
                 <GoSettings className="text-xl -rotate-90" />
               </div>
               {/* Sorting */}
@@ -41,9 +89,12 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
                 <div
                   onClick={handlerOpenSorting}
                   className="bg-gray-100 py-2.5 px-3 flex items-center justify-between rounded-md w-40 cursor-pointer"
-                >
-                  <p className="text-gray-400">Sorting by</p>
-                  <BiChevronDown className="text-lg" />
+                > 
+                {
+                  selectSorting? selectSorting?.length> 7 ? selectSorting?.substring(0, 7) + "..." : selectSorting : (<p className="text-gray-400">Sorting by</p>)
+                }
+                  
+                  <BiChevronDown className={`${openSorting&& "-rotate-180"} text-lg`} />
                 </div>
                 <div
                   className={`${
@@ -51,29 +102,53 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
                   } p-3 absolute top-12 rounded-md shadow-md w-full space-y-3`}
                 >
                   {sorting.map((val) => (
-                    <p key={val} onClick={() => setOpenSorting(false)} className="cursor-pointer">{val}</p>
+                    <p
+                      key={val}
+                      onClick={() => handlerSelectShorting(val)}
+                      className="cursor-pointer"
+                    >
+                      {val}
+                    </p>
                   ))}
                 </div>
               </div>
             </div>
           </div>
           {/* List Product and Filter Product */}
-            
-          <div className={`${openFilter? "flex space-x-10" : null} mt-10`}>
-            <div className={`${openFilter? "border border-gray-200 bg-gray-100 p-4 rounded-md w-[28vw] h-[100%]" : "hidden"}`}>
-                <div className="mb-3 flex items-center space-x-3 bg-white py-2.5 px-3 rounded-md">
-                    <BiSearch className="text-md text-gray-500"/>
-                    <input type="text" placeholder="Search here" className="bg-transparent"/>
-                </div>
-                <p>Hello world</p>
-                <p>Hello world</p>
-                <p>Hello world</p>
-                <p>Hello world</p>
-                <p>Hello world</p>
-                <p>Hello world</p>
+
+          <div className={`${openFilter ? "flex space-x-10" : null} mt-10`}>
+            <div
+              className={`${
+                openFilter&&isSticky
+                  ? "border border-gray-200 bg-gray-100 p-4 rounded-md w-[18.5vw] h-[100%] sticky top-5 z-20"
+                  : "hidden"
+              }`}
+            >
+              {/* Search Product */}
+              <div className="mb-3 flex items-center space-x-3 bg-white py-2.5 px-3 rounded-md">
+                <BiSearch className="text-md text-gray-500" />
+                <input
+                  type="text"
+                  placeholder="Search here"
+                  className="bg-transparent"
+                  // value={searchType}
+                  // onChange={handlerSearch}
+                />
+              </div>
+              {/* Merek */}
+              <div className="space-y-3 mt-10">
+                {mereks.map((merek: any) => (
+                  <div key={merek} className="flex items-center space-x-3 w-full">
+                    <div onClick={() => handlerCheckFilter(merek)} className={`${selectMerek.includes(merek)? "bg-blue-500 p-1" : "border border-gray-500 p-2.5"} rounded-sm`}>
+                      <BiCheck className={`${selectMerek.includes(merek)? "text-white text-md" : "hidden"}`}/>
+                    </div>
+                    <p>{merek}</p>
+                  </div>
+                ))}
+              </div>
             </div>
             <div>
-                <Products openFilter={openFilter}/>
+              <Products openFilter={openFilter} selectSorting={selectSorting} sorting={sorting} selectMerek={selectMerek}/>
             </div>
           </div>
         </div>
@@ -83,3 +158,5 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
 };
 
 export default ProductSection;
+
+// selectMerek.includes(merek)&& checkFilter === merek ?
