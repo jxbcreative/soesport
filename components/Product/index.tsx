@@ -40,13 +40,13 @@ const Products:React.FC<PropProduct> = ({openFilter, selectSorting, sorting, sel
     if(selectSorting !== ''){
         filterProduct = filterProduct.sort((a, b) => {
           if (selectSorting === sorting[0]) {
-            return b.price - a.price;
+            return b.rating - a.rating;
           }
           else if (selectSorting === sorting[1]) {
-            return a.price - b.price;
+            return b.price - a.price;
           }
           else if (selectSorting === sorting[2]) {
-            return b.rating - a.rating;
+            return a.price - b.price;
           }
           else{
             return 0
@@ -61,11 +61,11 @@ const Products:React.FC<PropProduct> = ({openFilter, selectSorting, sorting, sel
       <div className={`${openFilter? "grid-cols-3" : "grid-cols-4"} grid gap-10`}>
         {filteredProduct.slice(0, showMore ? filteredProduct.length : 8)?.map((items: any) => (
           <div key={items.id}>
-            <div className={`${styles.product} w-72 rounded-xl`}>
+            <div className={`${styles.product} w-[100%] rounded-xl`}>
               <Image
                 src={items.thumbnail}
                 alt={items.thumbnail}
-                width={300}
+                width={350}
                 height={300}
                 className="items-center"
               />

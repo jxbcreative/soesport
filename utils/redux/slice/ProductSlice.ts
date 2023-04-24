@@ -21,40 +21,45 @@ export const getProduct = createAsyncThunk("products/getProduct",async () => {
 })
 
 // search product
-export const searchProduct = createAsyncThunk("products/searchProduct",async (searchType:string) => {
-    try {
-        const response = await fetch(`${url_Product}?q=${searchProduct}`)
-        if(!response.ok){
-            console.log("Invalid Search Product")
-        }
-        const data = await response.json()
-        console.log(data)
-        // return data
-    } catch (error) {
-        console.log(error, "Invalid Search Product")
-    }
+// export const searchProduct = createAsyncThunk("products/searchProduct",async (query:string) => {
+//     try {
+//         const response = await fetch(`${url_Product}?q=${query}`)
+//         if(!response.ok){
+//             console.log("Invalid Search Product")
+//         }
+//         const data = await response.json()
+//         console.log(data)
+//         // return data
+//     } catch (error) {
+//         console.log(error, "Invalid Search Product")
+//     }
     
-})
+// })
 
 
 const initialState = {
     products: [],
-    mereks: [],
-    searchType: ''
+    query: ''
 } as any
 
 const productSlice = createSlice({
     name: "products",
     initialState,
-    reducers:{},
+    reducers:{
+        // setSearchQuery: (state, action: PayloadAction<string>) => {
+        //     state.query = action.payload;
+        //   },
+    },
     extraReducers: (builder) => {
         builder.addCase(getProduct.fulfilled, (state, action) => {
             state.products = action.payload
         })
-        builder.addCase(searchProduct.fulfilled, (state, action) => {
-            state.searchType = action.payload
-        })
+        // builder.addCase(searchProduct.fulfilled, (state, action) => {
+        //     state.products = action.payload
+        // })
     }
 })
+
+// export const {setSearchQuery} = productSlice.actions;
 
 export default productSlice.reducer
