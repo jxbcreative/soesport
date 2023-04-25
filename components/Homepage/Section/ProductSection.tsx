@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BiCheck, BiChevronDown } from "react-icons/bi";
+import { BiCheck } from "react-icons/bi";
 import { GoSettings } from "react-icons/go";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../utils/redux/store";
@@ -9,17 +9,15 @@ interface PropProduct {
   isMobile?: boolean;
 }
 
-const sorting = ["Popular", "High to Low", "Low to High"];
+const sorting = ["Popular", "High price", "Low price"];
 
 const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
   const [openFilter, setOpenFIlter] = useState<boolean>(false);
-  const [openSorting, setOpenSorting] = useState<boolean>(false);
-  // const dispatch = useDispatch<AppDispatch>();
+  // const [openSorting, setOpenSorting] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.product.products);
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const [selectSorting, setSelectSorting] = useState<string>("");
   const [selectMerek, setSelectMerek] = useState<string[]>([]);
-  // const [searchType, setSearchType] = useState<string>('')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,17 +31,9 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
     };
   });
 
-  // const handlerSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
-  //   setSearchType(e.target.value)
-  //   dispatch(searchProduct(e.target.value))
-  // }
 
   const handlerOpenFilter = () => {
     setOpenFIlter(!openFilter);
-  };
-
-  const handlerOpenSorting = () => {
-    setOpenSorting(!openSorting);
   };
 
   const mereks = Array.from(
@@ -69,7 +59,57 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
     <div>
       {isMobile ? (
         // Mobile view
-        <div></div>
+        <div className="mt-20 mb-20">
+          <div className="flex items-center justify-between px-3">
+            <h2 className="font-semibold text-2xl">New Arrival</h2>
+            <div onClick={handlerOpenFilter} className="p-2 bg-gray-100 rounded-md shadow-lg shadow-gray-200">
+              <GoSettings className="text-lg"/>
+            </div>
+          </div>
+          <div className={`${openFilter ? "bg-[#0808089f]" : "hidden"} w-screen h-screen fixed top-0`}>
+          <div className={`${openFilter ? "bg-white" : "hidden"} w-screen absolute bottom-0 rounded-t-md`}>
+            <div className="bg-gray-500 h-[2.3px] w-8 rounded-full my-2 mx-auto"/>
+            <div className="px-3 mt-5">
+              <h4 className="font-semibold text-[18px]">Filter</h4>
+              {/* Sorting and Filtering */}
+              <div className="mt-5">
+                {/* Sorting */}
+                <div>
+                  <h4 className="text-gray-500 font-semibold">Sorting</h4>
+                  <div className="grid grid-cols-3 gap-3 mt-3 mr-10">
+                    {
+                      sorting.map((sort: any) =>(
+                        <div key={sort} className="border-[1px] border-gray-400 py-2 px-3 rounded-full">
+                            <p className="text-center">{sort}</p>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+                {/* Filter */}
+                <div className="mt-10">
+                <h4 className="text-gray-500 font-semibold">Merek</h4>
+                <div className="grid grid-cols-3 gap-3 mt-3 mr-10">
+                  {
+                      mereks.map((merek: any) => (
+                        <div key={merek} className="border-[1px] border-gray-400 py-2 px-3 rounded-full">
+                            <p className="text-center">{merek}</p>
+                        </div>
+                      ))
+                  }
+                </div>
+                </div>
+              </div>
+              <div className="mt-10 mb-2">
+                <button onClick={() => setOpenFIlter(false)} className="bg-black text-white text-center py-3 w-full rounded-md font-semibold">
+                  Show product
+                </button>
+              </div>
+            </div>
+          </div>
+          </div>
+          {/* Product */}
+        </div>
       ) : (
         // Desktop view
         <div className="px-24 mt-32">
@@ -84,46 +124,9 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
               >
                 <GoSettings className="text-xl -rotate-90" />
               </div>
-              {/* Sorting */}
-              {/* <div className="relative">
-                <div
-                  onClick={handlerOpenSorting}
-                  className="bg-gray-100 py-2.5 px-3 flex items-center justify-between rounded-md w-40 cursor-pointer"
-                >
-                  {selectSorting ? (
-                    selectSorting?.length > 7 ? (
-                      selectSorting?.substring(0, 7) + "..."
-                    ) : (
-                      selectSorting
-                    )
-                  ) : (
-                    <p className="text-gray-400">Sorting by</p>
-                  )}
-
-                  <BiChevronDown
-                    className={`${openSorting && "-rotate-180"} text-lg`}
-                  />
-                </div>
-                <div
-                  className={`${
-                    openSorting ? "bg-gray-100" : "hidden"
-                  } p-3 absolute top-12 rounded-md shadow-md w-full space-y-3`}
-                >
-                  {sorting.map((val) => (
-                    <p
-                      key={val}
-                      onClick={() => handlerSelectShorting(val)}
-                      className="cursor-pointer"
-                    >
-                      {val}
-                    </p>
-                  ))}
-                </div>
-              </div> */}
             </div>
           </div>
           {/* List Product and Filter Product */}
-
           <div className={`${openFilter ? "flex space-x-10" : null} mt-10`}>
             <div
               className={`${

@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { RootState } from "../../utils/redux/store";
 import NavMobile from "./NavMobile";
-// import { getProduct } from "../../utils/redux/slice/ProductSlice";
+import SearchMobile from "./SearchMobile";
 
 const links: Navlink[] = [
   { page: "Homepage", link: "/" },
@@ -57,9 +57,13 @@ const Navbar = () => {
             <h1 className="font-bold text-lg">
               Soe<span className="text-blue-500">Sport.</span>
             </h1>
-            {/* Cart and icon mobile nav */}
+            {/* Search, Cart and icon mobile nav */}
             <div className="flex items-center space-x-8">
-              {/* Cart */}
+              {/* Search Mobile */}
+              <div onClick={handlerOpenSearch}>
+                <FiSearch className="text-lg"/>
+              </div>
+              {/* Cart Mobile */}
               <div>
                 <Link href={"/checkout"} className="relative">
                   <BsCart2 className="text-xl" />
@@ -74,6 +78,8 @@ const Navbar = () => {
               </div>
             </div>
           </div>
+          {/* Search */}
+          <SearchMobile openSearch={openSearch} setOpenSearch={setOpenSearch} filterProduct={filterProduct} handlerInputQuery={handleInputQuery} searchQuery={searchQuery}/>
           {/* Open Navbar Mobile */}
           <NavMobile
             handleActiveNav={handleActiveNav}
@@ -131,21 +137,27 @@ const Navbar = () => {
                   </div>
                   <div className="mt-5">
                     {
-                      searchQuery === '' ? 
+                      searchQuery  !== '' && filterProduct.length == 0&&
+                      (<div>
+                        <p>Product not found</p> 
+                      </div>)
+                    }
+                    {
+                    searchQuery === '' && filterProduct.length > 0 ? 
                       (<p>Please input data</p>) : 
-                      (<div className="space-y-3 h-[15rem] overflow-y-scroll scroll-smooth">
+                      (<div className={`${searchQuery !== '' && filterProduct.length == 0 ? "h-[50%]" : "h-[15rem]"} space-y-3 overflow-y-scroll scroll-smooth `}>
                         {
                           filterProduct.map((product: any) => (
-                            <div key={product.id} className="flex items-center space-x-2">
+                            <div key={product.id} className="flex items-center space-x-3">
                               <Image src={product.thumbnail} alt={product.thumbnail} width={70} height={70}/>
-                              <div>
+                              <div className="space-y-1">
                               <h4 className="font-semibold text-[14px]">{product.name_product}</h4>
                               <p>${product.price}</p>
                               </div>
                             </div>
                           ))
                         }
-                      </div>)
+                      </div>) 
                     }
                   </div>
                 </div>

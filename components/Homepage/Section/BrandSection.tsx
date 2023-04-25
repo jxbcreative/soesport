@@ -19,7 +19,7 @@ const BrandSection:React.FC<PropServices> = ({isMobile}) => {
                 <div className='flex items-center px-3 overflow-x-scroll space-x-20 scrollbar-hide scroll-smooth mt-20'>
                   {
                     brandImage.map((item) => (
-                      <Image key={item} src={require('../../../public/assets/' + item)} alt={item} className='w-32'/>
+                      <Image key={item} src={require('../../../public/assets/' + item)} alt={item} className='w-20'/>
                     ))
                   }
                 </div>

@@ -11,5 +11,5 @@ body{
 }
 
 p, input, button, li{
-  @apply text-[14px] placeholder:text-[14px] outline-none
+  @apply text-[14px] placeholder:text-[14px] outline-none list-none
 }

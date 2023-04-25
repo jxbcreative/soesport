@@ -22,3 +22,8 @@ export type Service = {
   content: string;
   icon: string;
 }
+
+export type SocialMedia = {
+  icon: string;
+  link: string;
+}
