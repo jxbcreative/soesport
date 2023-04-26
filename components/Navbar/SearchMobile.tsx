@@ -22,7 +22,7 @@ const SearchMobile: React.FC<PropSeach> = ({
     <div
       className={`${
         openSearch ? "bg-white top-0" : "hidden bottom-0"
-      } w-screen h-screen fixed`}
+      } w-screen h-screen fixed z-30`}
     >
       <div className="flex items-center space-x-2 p-5">
         <IoMdClose onClick={() => setOpenSearch(false)} className="text-xl" />

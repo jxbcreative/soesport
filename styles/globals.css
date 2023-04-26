@@ -10,6 +10,6 @@ body{
   @apply overflow-x-hidden font-inter bg-[#fcfcfc]
 }
 
-p, input, button, li{
+p, input, button, label, li{
   @apply text-[14px] placeholder:text-[14px] outline-none list-none
 }
