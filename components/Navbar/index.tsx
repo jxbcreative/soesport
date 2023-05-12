@@ -38,6 +38,7 @@ const Navbar = () => {
   // handler Open Search
   const handlerOpenSearch = () => {
     setOpenSearch(!openSearch);
+    setSearchQuery("")
   };
 
   const filterProduct = products.filter((product: any) =>
@@ -174,7 +175,9 @@ const Navbar = () => {
               {/* Sign Up */}
               <div>
                 <button className="bg-blue-500 text-white py-2.5 px-7 rounded-full font-semibold">
-                  Signup
+                  <Link href={'/register'}>
+                    Signup
+                  </Link>
                 </button>
               </div>
             </div>

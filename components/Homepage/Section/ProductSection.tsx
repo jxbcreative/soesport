@@ -17,7 +17,7 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
   const products = useSelector((state: RootState) => state.product.products);
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const [selectSorting, setSelectSorting] = useState<string>("");
-  const [choosSelect, setChoosSelect] = useState<boolean>(false);
+  // const [choosSelect, setChoosSelect] = useState<boolean>(false);
   const [selectMerek, setSelectMerek] = useState<string[]>([]);
 
   useEffect(() => {
@@ -31,7 +31,6 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
-
 
   const handlerOpenFilter = () => {
     setOpenFIlter(!openFilter);
@@ -53,7 +52,7 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
 
   // multiple select merek
   const handlerSelectShorting = (val: any) => {
-      setSelectSorting(val)
+    setSelectSorting(val);
   };
 
   return (
@@ -63,62 +62,89 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
         <div className="mt-20 mb-20">
           <div className="flex items-center justify-between px-3">
             <h2 className="font-semibold text-2xl">New Arrival</h2>
-            <div onClick={handlerOpenFilter} className="p-2 bg-gray-100 rounded-md shadow-lg shadow-gray-200">
-              <GoSettings className="text-lg rotate-90"/>
+            <div
+              onClick={handlerOpenFilter}
+              className="p-2 bg-gray-100 rounded-md shadow-lg shadow-gray-200"
+            >
+              <GoSettings className="text-lg rotate-90" />
             </div>
           </div>
-          <div className={`${openFilter ? "bg-[#0808089f]" : "hidden"} w-screen h-screen fixed top-0`}>
-          <div className={`${openFilter ? "bg-white" : "hidden"} w-screen absolute bottom-0 rounded-t-md`}>
-            <div className="bg-gray-500 h-[2.3px] w-8 rounded-full my-2 mx-auto"/>
-            <div className="px-3 mt-5">
-              <h4 className="font-semibold text-[18px]">Filter</h4>
-              {/* Sorting and Filtering */}
-              <div className="mt-5">
-                {/* Sorting */}
-                <div>
-                  <h4 className="text-gray-500 font-semibold">Sorting</h4>
-                  <div className="grid grid-cols-3 gap-3 mt-3 mr-10">
-                    {
-                      sorting.map((sort: any) =>(
-                        <div key={sort} onClick={() => handlerSelectShorting(sort)} className={` ${selectSorting == sort ? "bg-blue-500 text-white" : "border-[1px] border-gray-400"} py-2 px-3 rounded-full`}>
-                            <p className="text-center">{sort}</p>
+          <div
+            className={`${
+              openFilter ? "bg-[#0808089f]" : "hidden"
+            } w-screen h-screen fixed top-0`}
+          >
+            <div
+              className={`${
+                openFilter ? "bg-white" : "hidden"
+              } w-screen absolute bottom-0 rounded-t-md`}
+            >
+              <div className="bg-gray-500 h-[2.3px] w-8 rounded-full my-2 mx-auto" />
+              <div className="px-3 mt-5">
+                <h4 className="font-semibold text-[18px]">Filter</h4>
+                {/* Sorting and Filtering */}
+                <div className="mt-5">
+                  {/* Sorting */}
+                  <div>
+                    <h4 className="text-gray-500 font-semibold">Sorting</h4>
+                    <div className="grid grid-cols-3 gap-3 mt-3 mr-10">
+                      {sorting.map((sort: any) => (
+                        <div
+                          key={sort}
+                          onClick={() => handlerSelectShorting(sort)}
+                          className={` ${
+                            selectSorting == sort
+                              ? "bg-blue-500 text-white"
+                              : "border-[1px] border-gray-400"
+                          } py-2 px-3 rounded-full`}
+                        >
+                          <p className="text-center">{sort}</p>
                         </div>
-                      ))
-                    }
+                      ))}
+                    </div>
+                  </div>
+                  {/* Filter */}
+                  <div className="mt-10">
+                    <h4 className="text-gray-500 font-semibold">Merek</h4>
+                    <div className="grid grid-cols-3 gap-3 mt-3 mr-10">
+                      {mereks.map((merek: any) => (
+                        <div
+                          key={merek}
+                          onClick={() => handlerCheckFilter(merek)}
+                          className={`${
+                            selectMerek.includes(merek)
+                              ? "bg-blue-500 text-white"
+                              : "border-[1px] border-gray-400"
+                          } py-2 px-3 rounded-full`}
+                        >
+                          <p className="text-center">{merek}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                {/* Filter */}
-                <div className="mt-10">
-                <h4 className="text-gray-500 font-semibold">Merek</h4>
-                <div className="grid grid-cols-3 gap-3 mt-3 mr-10">
-                  {
-                      mereks.map((merek: any) => (
-                        <div key={merek} onClick={() => handlerCheckFilter(merek)} className={`${
-                          selectMerek.includes(merek)
-                            ? "bg-blue-500 text-white" : "border-[1px] border-gray-400"
-                        } py-2 px-3 rounded-full`}>
-                            <p className="text-center">{merek}</p>
-                        </div>
-                      ))
-                  }
+                <div className="mt-10 mb-2">
+                  {selectMerek && selectSorting == "" ? (
+                    ""
+                  ) : (
+                    <button
+                      onClick={() => setOpenFIlter(false)}
+                      className="bg-black text-white text-center py-3 w-full rounded-md font-semibold"
+                    >
+                      Show product
+                    </button>
+                  )}
                 </div>
-                </div>
-              </div>
-              <div className="mt-10 mb-2">
-                <button onClick={() => setOpenFIlter(false)} className="bg-black text-white text-center py-3 w-full rounded-md font-semibold">
-                  Show product
-                </button>
               </div>
             </div>
-          </div>
           </div>
           {/* Product */}
           <Products
-                openFilter={openFilter}
-                selectSorting={selectSorting}
-                sorting={sorting}
-                selectMerek={selectMerek}
-              />
+            openFilter={openFilter}
+            selectSorting={selectSorting}
+            sorting={sorting}
+            selectMerek={selectMerek}
+          />
         </div>
       ) : (
         // Desktop view
@@ -201,13 +227,13 @@ const ProductSection: React.FC<PropProduct> = ({ isMobile }) => {
                   </div>
                 ))}
               </div>
-            </div>           
-              <Products
-                openFilter={openFilter}
-                selectSorting={selectSorting}
-                sorting={sorting}
-                selectMerek={selectMerek}
-              />
+            </div>
+            <Products
+              openFilter={openFilter}
+              selectSorting={selectSorting}
+              sorting={sorting}
+              selectMerek={selectMerek}
+            />
           </div>
         </div>
       )}
