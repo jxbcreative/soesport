@@ -1,0 +1,23 @@
+version: '3.7'
+
+services: 
+  soeport:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    command: npm run dev 
+    ports:
+      - 3000:3000
+    networks:
+      - node_networks
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+
+networks:
+  node_networks:
+      name: node_networks
+
+volumes:
+  node_modules:
